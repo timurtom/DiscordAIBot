@@ -18,10 +18,10 @@
 
 ## Как его установить?
 ### 1 Часть ( В браузере ) 
-1. Открываете (Discord Developer Portal)[https://discord.com/developers/home] и создаете там нового бота
+1. Открываете [Discord Developer Portal](https://discord.com/developers/home) и создаете там нового бота
 2. В вкладке "Бот" создаете токен и копируете на будущее
 3. В той же вкладке включаете Presence Intent, Server Members Intent и Message Content Intent
-4. Откройте (Google AI studio)[https://aistudio.google.com/api-keys], создайте и скопируйте API ключ
+4. Откройте [Google AI studio](https://aistudio.google.com/api-keys), создайте и скопируйте API ключ
 ### 2 часть ( На сервере )
 Устанавливаете все необходимые пакеты
 На дебиан/убунту
