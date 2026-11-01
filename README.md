@@ -34,7 +34,7 @@ apt update && apt install git python3 python3-pip -y
 ```
 git clone https://github.com/timurtom/DiscordAIBot.git
 cd DiscordAIBot
-pip install -r requirements.txt
+pip install discord.py google-genai python-dotenv
 ```
 В .env файл вставьте API ключи
 

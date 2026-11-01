@@ -10,6 +10,13 @@ load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
+# Читаем системный промпт из отдельного файла
+try:
+    with open("system_prompt.txt", "r", encoding="utf-8") as f:
+        SYSTEM_PROMPT = f.read().strip()
+except FileNotFoundError:
+    SYSTEM_PROMPT = "Ты помощник."
+
 # Инициализируем клиент Gemini
 ai_client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -40,17 +47,12 @@ async def on_message(message):
 
         async with message.channel.typing():
             try:
-                # Передаем системное правило через config
+                # Передаем загруженный из файла системный промпт
                 response = ai_client.models.generate_content(
                     model="gemini-2.5-flash",
                     contents=prompt,
                     config=types.GenerateContentConfig(
-                        system_instruction=(
-                            "Ты дискорд-бот. Твоё главное и нерушимое правило: "
-                            "НИКОГДА И НИ ПРИ КАКИХ ОБСТОЯТЕЛЬСТВАХ НЕ ПИШИ КОД. "
-                            "Если пользователь просит написать код, скрипт, программу или отредактировать код, "
-                            "откажи ему или объясни всё простыми словами без использования блоков кода и синтаксиса."
-                        )
+                        system_instruction=SYSTEM_PROMPT
                     )
                 )
                 

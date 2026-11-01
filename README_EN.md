@@ -37,7 +37,7 @@ Clone the repository and install all required libraries:
 ```bash
 git clone https://github.com/timurtom/DiscordAIBot.git
 cd DiscordAIBot
-pip install -r requirements.txt
+pip install discord.py google-genai python-dotenv
 ```
 
 Insert your API keys into the `.env` file.
