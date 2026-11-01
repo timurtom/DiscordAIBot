@@ -2,14 +2,13 @@ import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
-from google import genai
-from google.genai import types
+from openai import OpenAI
 
 # Загружаем переменные из .env
 load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+OPENROUTER_MODEL = os.getenv("OPENROUTER_MODEL", "deepseek/deepseek-chat")
 
 # Читаем системный промпт из отдельного файла
 try:
@@ -18,8 +17,11 @@ try:
 except FileNotFoundError:
     SYSTEM_PROMPT = "Ты помощник."
 
-# Инициализируем клиент Gemini
-ai_client = genai.Client(api_key=GEMINI_API_KEY)
+# Инициализируем клиент OpenAI через OpenRouter
+ai_client = OpenAI(
+    api_key=OPENROUTER_API_KEY,
+    base_url="https://openrouter.ai/api/v1"
+)
 
 # Настройка интентов Discord
 intents = discord.Intents.default()
@@ -29,7 +31,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
 async def on_ready():
-    print(f"Logged in as {bot.user.name} (ID: {bot.user.id}) 🚀")
+    print(f"Logged in as {bot.user.name} (ID: {bot.user.id}) через OpenRouter 🚀")
 
 @bot.event
 async def on_message(message):
@@ -48,16 +50,16 @@ async def on_message(message):
 
         async with message.channel.typing():
             try:
-                # Передаем загруженный из файла системный промпт
-                response = ai_client.models.generate_content(
-                    model=GEMINI_MODEL,
-                    contents=prompt,
-                    config=types.GenerateContentConfig(
-                        system_instruction=SYSTEM_PROMPT
-                    )
+                # Запрос через OpenRouter (формат OpenAI API)
+                response = ai_client.chat.completions.create(
+                    model=OPENROUTER_MODEL,
+                    messages=[
+                        {"role": "system", "content": SYSTEM_PROMPT},
+                        {"role": "user", "content": prompt}
+                    ]
                 )
                 
-                reply_text = response.text
+                reply_text = response.choices[0].message.content
 
                 # Делим длинные ответы (лимит Discord — 2000 символов)
                 if len(reply_text) > 2000:
@@ -67,8 +69,8 @@ async def on_message(message):
                     await message.reply(reply_text)
 
             except Exception as e:
-                print(f"Error communicating with Gemini: {e}")
-                await message.reply("чет сломалось")
+                print(f"Error communicating with OpenRouter: {e}")
+                await message.reply("чет сломалось 😭")
 
     await bot.process_commands(message)
 
