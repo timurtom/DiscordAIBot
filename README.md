@@ -36,10 +36,13 @@ git clone https://github.com/timurtom/DiscordAIBot.git
 cd DiscordAIBot
 pip install discord.py google-genai python-dotenv
 ```
-В .env файл вставьте API ключи
+Переименуйте `example.env` в `.env` и добавьте свои API ключи
+```
+mv example.env .env
+```
 
 ## Задания на будущее
 
 - [x] Написать самого бота
 - [x] Перенести ограничения в отдельный файл
-- [ ] Сделать чтоб он отвечал на часто задаваемые вопросы по серверу
+- [x] Сделать чтоб он отвечал на часто задаваемые вопросы по серверу

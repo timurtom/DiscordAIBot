@@ -9,6 +9,7 @@ from google.genai import types
 load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 # Читаем системный промпт из отдельного файла
 try:
@@ -49,7 +50,7 @@ async def on_message(message):
             try:
                 # Передаем загруженный из файла системный промпт
                 response = ai_client.models.generate_content(
-                    model="gemini-2.5-flash",
+                    model=GEMINI_MODEL,
                     contents=prompt,
                     config=types.GenerateContentConfig(
                         system_instruction=SYSTEM_PROMPT
@@ -67,7 +68,7 @@ async def on_message(message):
 
             except Exception as e:
                 print(f"Error communicating with Gemini: {e}")
-                await message.reply("damn, something broke trying to reach the AI 😭")
+                await message.reply("чет сломалось")
 
     await bot.process_commands(message)
 

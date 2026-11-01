@@ -5,7 +5,7 @@
 
 ### What is this?
 Well, if it wasn't clear from the name, this is a Discord bot with an integrated AI assistant.
-> By the way, the bot is written in Python.
+> btw, the bot is written in Python.
 
 ### What is this bot made for?
 The bot is currently being written for a small Minecraft Discord server so players can chat with it, idrk.  
@@ -40,10 +40,13 @@ cd DiscordAIBot
 pip install discord.py google-genai python-dotenv
 ```
 
-Insert your API keys into the `.env` file.
+Rename `example.env` to `.env` and insert your API keys
+```
+mv example.env .env
+```
 
 ## To-Do List
 
 - [x] Write the bot itself
 - [x] Move limitations to a separate file
-- [ ] Make it answer frequently asked questions about the server
+- [x] Make it answer frequently asked questions about the server
