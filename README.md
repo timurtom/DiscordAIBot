@@ -12,7 +12,7 @@ RU | [EN](./README_EN.md)
 По задумке он должен быть ботом с которым можно: пообщатся, задать вопрос по серверу, попросить помощь по майнкрафту и т.п
 
 
-### Почему именно Gemini?
+### Почему именно openrouter?
 Потому что бесплатно ¯\\\_(ツ)\_/¯
 
 ## Ограничения
@@ -23,7 +23,7 @@ RU | [EN](./README_EN.md)
 1. Открываете [Discord Developer Portal](https://discord.com/developers/home) и создаете там нового бота
 2. В вкладке "Бот" создаете токен и копируете на будущее
 3. В той же вкладке включаете Presence Intent, Server Members Intent и Message Content Intent
-4. Откройте [Google AI studio](https://aistudio.google.com/api-keys), создайте и скопируйте API ключ
+4. Откройте [OpenRouter API key](https://openrouter.ai/workspaces/default/keys), создайте и скопируйте API ключ
 ### 2 часть ( На сервере )
 Устанавливаете все необходимые пакеты
 На дебиан/убунту
@@ -32,7 +32,7 @@ apt update && apt install git python3 python3-pip -y
 ```
 Клонируйте репозиторию и устанавливайте все необходимые библиотеки
 ```
-git clone https://github.com/timurtom/DiscordAIBot.git
+git clone -b openai https://github.com/timurtom/DiscordAIBot.git
 cd DiscordAIBot
 pip install discord.py google-genai python-dotenv
 ```
