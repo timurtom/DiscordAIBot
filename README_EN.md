@@ -35,14 +35,15 @@ apt update && apt install git python3 python3-pip -y
 
 Clone the repository and install all required libraries:
 ```bash
-git clone -b openai https://github.com/timurtom/DiscordAIBot.git
+git clone https://github.com/timurtom/DiscordAIBot.git
 cd DiscordAIBot
-pip install discord.py google-genai python-dotenv
+pip install discord.py openai python-dotenv
 ```
 
-Rename `example.env` to `.env` and insert your API keys
+Rename `example.env` to `.env` and insert your API keys also rename `system_prompt_example.txt` to `system_prompt.txt`
 ```
 mv example.env .env
+mv system_prompt_example.txt system_prompt_example.txt
 ```
 
 ## To-Do List
