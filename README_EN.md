@@ -45,5 +45,5 @@ Insert your API keys into the `.env` file.
 ## To-Do List
 
 - [x] Write the bot itself
-- [ ] Move limitations to a separate file
+- [x] Move limitations to a separate file
 - [ ] Make it answer frequently asked questions about the server
