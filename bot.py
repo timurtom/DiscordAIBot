@@ -102,10 +102,10 @@ async def on_message(message):
                 
                 reply_text = response.choices[0].message.content
 
-                # Делим длинные ответы под лимит Дискорда в 2000 символов
-                if len(reply_text) > 2000:
-                    for i in range(0, len(reply_text), 2000):
-                        await message.channel.send(reply_text[i:i+2000])
+                # Делим длинные ответы под лимит Дискорда в 700 символов
+                if len(reply_text) > 700:
+                    for i in range(0, len(reply_text), 700):
+                        await message.channel.send(reply_text[i:i+700])
                 else:
                     await message.reply(reply_text)
 
