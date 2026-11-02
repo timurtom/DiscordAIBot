@@ -45,7 +45,10 @@ Rename `example.env` to `.env` and insert your API keys also rename `system_prom
 mv example.env .env
 mv system_prompt_example.txt system_prompt_example.txt
 ```
-
+Start the bot
+```
+python bot.py
+```
 ## To-Do List
 
 - [x] Write the bot itself
