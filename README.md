@@ -41,6 +41,10 @@ pip install discord.py openai python-dotenv
 mv example.env .env
 mv system_prompt_example.txt system_prompt_example.txt
 ```
+Запустите бота
+```
+python bot.py
+```
 
 ## Задания на будущее
 
