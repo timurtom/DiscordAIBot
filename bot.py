@@ -97,7 +97,8 @@ async def on_message(message):
                 # Запрос к OpenRouter с учетом истории
                 response = ai_client.chat.completions.create(
                     model=OPENROUTER_MODEL,
-                    messages=messages_payload
+                    messages=messages_payload,
+                    max_tokens=2000
                 )
                 
                 reply_text = response.choices[0].message.content
