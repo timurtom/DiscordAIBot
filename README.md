@@ -1,6 +1,6 @@
 # Discord AI Bot
 
-Русский | [English (старая версия)](./README_EN.md) · [Changelog](./CHANGELOG.md)
+Русский | [Changelog](./CHANGELOG.md)
 
 Discord-бот на Python с ИИ через [OpenRouter](https://openrouter.ai/). Изначально создавался для Minecraft-сервера: отвечает на вопросы игроков, использует правила и FAQ из системного промпта и поддерживает диалоги через реплаи.
 
